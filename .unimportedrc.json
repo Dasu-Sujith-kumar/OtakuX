@@ -1,0 +1,31 @@
+{
+  "ignoreUnresolved": [],
+  "ignoreUnused": [
+    "axios",
+    "cheerio",
+    "cross-fetch",
+    "electron-store",
+    "fs-extra",
+    "puppeteer"
+  ],
+  "ignoreUnimported": [
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\antibot-preload.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\colamanga-preload.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\asura.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\colamanga.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\erosscan.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\hentai2read.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\hitomi.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\http.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\modules\\nhentai.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\preload.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\renderer.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\ui\\App.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\ui\\DownloadManager.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\ui\\ModalManager.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\ui\\ModuleStateManager.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\ui\\UIManager.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\ui\\utils.js",
+    "C:\\Users\\sujit\\Downloads\\Otaku-jules-fix-yt-dlp-and-sidebar-ui\\webpack.config.js"
+  ]
+}

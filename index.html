@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtakuX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+  .modal {
+    z-index: 10000;
+    transform: translateZ(100px);
+  }
+  .modal-content {
+    position: relative;
+    z-index: 10001;
+  }
+</style>
+</head>
+<body>
+  <!-- Layer 1: App container (sidebars + main) -->
+  <div id="app">
+    <div class="sidebar-left">
+      <button id="logo-btn" class="sidebar-logo-btn">
+        <div class="sidebar-logo">
+          <img src="public/application logo-trans (1).png" alt="OtakuX Logo" class="sidebar-logo-img logo-default" />
+          <img src="public/hover.png" alt="OtakuX Logo Hover" class="sidebar-logo-img logo-hover" />
+        </div>
+      </button>
+  <script>console.log('[index.html] logo-btn exists:', document.getElementById('logo-btn'));</script>
+      <div id="module-buttons"></div>
+      <!--<button id="blank-browser-btn" class="module-button blank-btn">Blank</button>-->
+    </div>
+    <div class="main-content">
+      <div class="browser-header">
+        <div class="browser-controls" style="display: flex; align-items: center;">
+          <button id="sidebar-toggle" class="hamburger-btn" title="Toggle sidebar">
+            <span class="custom-hamburger">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </span>
+          </button>
+          <div class="traffic-lights">
+            <div class="light red" id="close-browser"></div>
+            <div class="light yellow" id="minimize-browser"></div>
+            <div class="light green" id="maximize-browser"></div>
+          </div>
+          <div class="nav-controls">
+            <button id="browser-back" title="Back"><i class="fas fa-arrow-left"></i></button>
+            <button id="browser-forward" title="Forward"><i class="fas fa-arrow-right"></i></button>
+            <button id="browser-refresh" title="Refresh"><i class="fas fa-sync-alt"></i></button>
+          </div>
+          <div class="url-bar">
+            <label for="url-edit" class="visually-hidden">Page URL</label>
+            <input type="text" id="url-edit" value="about:blank" spellcheck="false" placeholder="Enter URL..." title="Page URL">
+            <button id="go-btn">Go</button>
+          </div>
+        </div>
+      </div>
+  <div class="welcome-header" style="text-align:center;margin-top:120px;display:flex;visibility:visible;">
+        <button id="welcome-logo-btn" class="welcome-logo-btn">
+          <img src="public/application logo-trans (1).png" alt="OtakuX Logo" class="welcome-logo-img" />
+        </button>
+        <h1 class="welcome-title">OtakuX</h1>
+        <p class="welcome-desc">A modern, feature-rich browsing experience with<br>enhanced controls and customization.</p>
+      </div>
+      <div class="browser-content" id="browser-content"></div>
+    </div>
+    <div class="sidebar-right">
+      <div class="controls-header">
+                <div>Controls</div>
+            </div>
+            <div class="active-module">
+                <div class="label">Active Module</div>
+                <div class="value" id="active-module-name">None</div>
+            </div>
+            <div class="toggle-group">
+                <div class="toggle-item">
+                    <span><i class="fas fa-globe"></i> Browser View</span>
+                    <div class="toggle" id="browser-toggle"><div class="toggle-slider"></div></div>
+                </div>
+                <div class="toggle-item">
+                    <span><i class="fas fa-eye"></i> Adult Mode</span>
+                    <div class="toggle" id="adult-toggle"><div class="toggle-slider"></div></div>
+                </div>
+                <div class="toggle-item">
+                    <span><i class="fas fa-shield-alt"></i> Ad Blocker</span>
+                    <div class="toggle" id="adblock-toggle"><div class="toggle-slider"></div></div>
+                </div>
+            </div>
+            <div class="download-path-section">
+                <div class="label">Download Path</div>
+                <div class="input-group">
+                    <input type="text" id="download-path" readonly value="/Users/Downloads" title="Download folder path" placeholder="Select download folder">
+                    <button id="select-path-btn" title="Select Download Path"><i class="fas fa-folder-open"></i></button>
+                </div>
+            </div>
+            <div class="url-input-section">
+                <div class="label">URL Input</div>
+                <div class="input-group">
+                    <label for="url-input" class="visually-hidden">Direct URL Input</label>
+                    <input type="text" id="url-input" placeholder="Enter or paste URL..." title="Direct URL Input" autocomplete="off">
+                    <label for="url-input" class="visually-hidden">Direct URL Input</label>
+                    <button id="paste-btn" title="Paste URL from browser"><i class="fas fa-paste"></i></button>
+                </div>
+            </div>
+            <button id="download-btn" class="download-button" disabled><i class="fas fa-download"></i> Download</button>
+            <button id="download-video-btn" class="download-button video-btn"><i class="fas fa-video"></i> Download Video</button>
+            <button id="history-btn" class="download-button history-btn"><i class="fas fa-history"></i> History</button>
+            <div class="status-info">
+                <div class="status-item"><span>Status:</span><span class="status-ready">Ready</span></div>
+                <div class="status-item"><span>Modules:</span><span id="module-count">0 loaded</span></div>
+                <div class="status-item"><span>Mode:</span><span id="mode-display">Regular</span></div>
+                <div class="status-item"><span>Video Progress:</span><span id="video-progress">0%</span></div>
+                <div class="progress-container">
+                  <div id="video-progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+  <!-- Layer 2: Browser content -->
+  <div id="browser-container"></div>
+
+  <!-- Layer 3: Modals -->
+  <div id="download-path-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-title">Select Download Path</span>
+        <button class="modal-close" id="close-path-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Choose where you want to save your downloaded files.</p>
+        <div class="path-options">
+          <div class="path-option selected" data-path="/Users/Downloads"><i class="fas fa-folder"></i> Downloads <span class="path-desc">/Users/Downloads</span></div>
+          <div class="path-option" data-path="/Users/Desktop"><i class="fas fa-home"></i> Desktop <span class="path-desc">/Users/Desktop</span></div>
+          <div class="path-option" data-path="/Users/Documents"><i class="fas fa-file-alt"></i> Documents <span class="path-desc">/Users/Documents</span></div>
+          <div class="path-option" data-path="/Users/Videos"><i class="fas fa-video"></i> Videos <span class="path-desc">/Users/Videos</span></div>
+          <div class="path-option custom" data-path="custom"><i class="fas fa-lock"></i> Custom Path</div>
+        </div>
+        <div class="custom-path-input hidden">
+          <input type="text" id="custom-path" placeholder="/custom/download/path">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-path-btn" class="modal-cancel">Cancel</button>
+        <button id="select-path-confirm" class="modal-confirm">Select Path</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="history-modal" class="modal hidden">
+    <div class="modal-content history-modal-content">
+      <div class="modal-header">
+        <span class="modal-title">Download History</span>
+        <button class="modal-close" id="close-history-modal">&times;</button>
+      </div>
+      <div class="modal-body history-list" id="history-list">
+        <!-- History items will be rendered here -->
+      </div>
+      <div class="modal-footer">
+        <button id="clear-completed-btn" class="modal-cancel">Clear Completed</button>
+        <button id="clear-all-btn" class="modal-confirm">Clear All</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="video-quality-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-title">Select Video Quality</span>
+        <button class="modal-close" id="close-quality-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Choose the video quality for your download. Higher quality videos are larger in size but offer better viewing experience.</p>
+        <p><b>MP4:</b> Most compatible, works on all devices.<br><b>WEBM:</b> Modern format, smaller size, may not play everywhere.</p>
+        <div class="quality-options">
+          <!-- Video quality options will be dynamically inserted here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="start-video-download" class="modal-confirm video-confirm"><i class="fas fa-video"></i> Start Video Download</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="webpack-dist/renderer.bundle.js"></script>
+</body>
+</html>
