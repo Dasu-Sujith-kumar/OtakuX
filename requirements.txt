@@ -1,0 +1,21 @@
+# Node.js/Electron project requirements for OtakuX
+
+# Main dependencies
+@cliqz/adblocker-electron
+axios
+cheerio
+cross-fetch
+electron-store
+fs-extra
+playwright
+puppeteer
+yt-dlp-wrap
+
+# Development dependencies
+@babel/core
+@babel/preset-env
+babel-loader
+electron
+electron-builder
+webpack
+webpack-cli
